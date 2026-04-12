@@ -1,35 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react';
+import getCalendar from './getCalendar';
 
-function App() {
-  const [count, setCount] = useState(0)
+function App(){
+  const [year, setYear] = useState(2026);
+  const [month, setMonth] = useState(1);
+  const calendar = getCalendar(year, month);
+  const days = ["日","月","火","水","木","金","土"];
+  const [selectedDate, setSelectedDate] = useState(1);
+  console.log(selectedDate);
 
-  return (
+  function result(day){
+    setSelectedDate(day);
+  }
+  useEffect(() => {
+    (async () => {
+      const url = import.meta.env.VITE_SUPABASE_URL + "/qiita-api-test";
+        
+      const response = await fetch(url, {
+        method: "GET" ,
+        headers: {
+          "Authorization": import.meta.env.VITE_SUPABASE_TOKEN,
+          "Content-Type": "application/json"
+        }
+      });
+      const result = await response.json();
+      console.log(result);
+    })();
+  }, []);
+  return(
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <h1>カレンダーアプリ</h1>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div>
+        <p>{month}月</p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <table border="1">
+        <tbody>
+          <tr>
+            {days.map((day, i) => (
+              <td key={i}>{day}</td>
+            ))}
+          </tr>
+          { calendar.map((week, j) => {
+            return (<tr key={j}>
+              { week.map((day, k) => {
+                return <td key={k} onClick={() => result(day)} style={{'cursor': 'pointer'}}>{ day }</td>
+              }) }
+            </tr>)
+          }) }
+        </tbody>
+      </table>
     </>
   )
 }
-
-export default App
+export default App;
