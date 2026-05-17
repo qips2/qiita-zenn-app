@@ -10,9 +10,6 @@ async function main() {
   } else {
     console.log('Data:', data);
   }
-
-  //Database Function経由
-  
 }
 
 main();
