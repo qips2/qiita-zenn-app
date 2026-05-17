@@ -1,0 +1,19 @@
+{
+  "name": "my-supabase",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.90.1",
+    "axios": "^1.13.6",
+    "dotenv": "^17.2.3",
+    "supabase": "^2.78.1"
+  }
+}

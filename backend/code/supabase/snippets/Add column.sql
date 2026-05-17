@@ -1,0 +1,1 @@
+insert into test_table (id,message) values ('1','AAA')
