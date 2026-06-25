@@ -393,3 +393,9 @@ entrypoint = "./functions/qiita-api/index.ts"
 # Specifies static files to be bundled with the function. Supports glob patterns.
 # For example, if you want to serve static HTML pages in your function:
 # static_files = [ "./functions/qiita-api/*.html" ]
+
+[functions.article-ai-summary]
+enabled = true
+verify_jwt = true
+import_map = "./functions/article-ai-summary/deno.json"
+entrypoint = "./functions/article-ai-summary/index.ts"
