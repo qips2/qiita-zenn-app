@@ -6,7 +6,7 @@ name: test-migrasion
 on:
   # Triggers the workflow on push or pull request events but only for the "master" branch
   push:
-    branches: ["main", "test\backend"]
+    branches: ["main", "test\backend", "feature\ai-summary"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
