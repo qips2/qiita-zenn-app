@@ -399,3 +399,9 @@ enabled = true
 verify_jwt = true
 import_map = "./functions/article-ai-summary/deno.json"
 entrypoint = "./functions/article-ai-summary/index.ts"
+
+[functions.article-summary]
+enabled = true
+verify_jwt = true
+import_map = "./functions/article-summary/deno.json"
+entrypoint = "./functions/article-summary/index.ts"
